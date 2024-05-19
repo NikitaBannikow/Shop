@@ -2,6 +2,7 @@ import React from "react";
 import Header from "./Components/Header";
 import Footer from "./Components/Footer";
 import Items from "./Components/Items";
+import Order from "./Components/Order";
 
 class App extends React.Component {
   constructor(props) {
@@ -35,15 +36,21 @@ class App extends React.Component {
         }
       ]
     }
+    this.addToOrder = this.addToOrder.bind(this)
+    this.delete0rder = this.delete0rder.bind(this)
   }
   
   render() {
     return (
       <div className="wrapper">
-        <Header />
-        <Items items = {this.state.items} />
+        <Header orders={this.state.orders} onDelete={this.delete0rder}/>
+        <Items items = {this.state.items} onAdd={this.addToOrder}/>
         <Footer />
       </div>)
+  }
+
+  delete0rder(id) {
+    this.setState({orders: this.state.orders.filter(el => el.id !== id)})
   }
 
   addToOrder(item) {
@@ -54,10 +61,6 @@ class App extends React.Component {
     })
     if (!isInArray)
       this.setState({orders: [...this.state.orders, item]})
-  }
-
-  delete0rder(id) {
-    this.setState({orders: this.state.orders.filter(el => el.id !== id)})
   }
 }
 
