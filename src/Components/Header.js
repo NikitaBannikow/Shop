@@ -1,18 +1,8 @@
 import React from 'react'
 
-const showOrders = (props) =>{
-let summa = 0
-props.orders.forEach(el => summa += Number.parseFloat(el.price))
-return(<div>
-    {props.orders.map(el =>(
-      <Order onDelete ={props.onDelete} key={el.id} item={el}/>
-    ))}
-    <p className='summa'>Сумма: {new Intl.NumberFormat().format(summa)}</p>
-</div>)
-}
-
-export default function Header() {
-  return (
+export default function Header(props) {
+    let [cartOpen, setCartOpen] = useState(false)
+    return (
     <header>
         <div>
             <span className='logo'>Название</span>
@@ -21,6 +11,14 @@ export default function Header() {
                 <li>contact</li>
                 <li>user</li>
             </ul>
+            <FaShoppingCart onClick = {() => setCartOpen(cartOpen = !cartOpen)} className={`shop-cart ${cartOpen && 'active'}`}/>
+
+            {cartOpen && (
+                <div className='cart-op'>
+                   {props.orders.length > 0 ?
+                        showOrders(props) : showNothing()}
+                </div>
+            )}
         </div>
         <div className='presentation'></div>
     </header>

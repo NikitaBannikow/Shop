@@ -17,6 +17,10 @@ body {
     margin: 50px auto;
 }
 
+header {
+    position: relative;
+}
+
 header .logo {
     font-weight: 600;
     font-size: 20px;
@@ -36,28 +40,6 @@ header ul.nav li {
 
 header ul.nav li:hover {
     opacity: 0.5;
-}
-
-header .shop-cart .item .delete-icon{
-    color: #811010;
-    float: right;
-    position: relative;
-    top: 25px;
-    cursor: pointer;
-    transition: transform 500ms ease;
-}
-
-header .shop-cart .item .delete-icon{
-    color: #d40000;
-    transform: scale(1.5);
-}
-
-header .shop-cart .summa{
-    float: left;
-    width: 100%;
-    font-weight: 600;
-    font-size: 20px;
-    margin-bottom: 20px;
 }
 
 header .presentation {
