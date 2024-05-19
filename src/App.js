@@ -34,16 +34,22 @@ class App extends React.Component {
         }
       ]
     }
+    this.deleteOrder = this.deleteOrder.bind(this)
   }
   
   render() {
     return (
       <div className="wrapper">
-        <Header />
+        <Header onDelete={this.deleteOrder}/>
         <Items items = {this.state.items} />
         <Footer />
       </div> )
   }
+
+  delete0rder(id) {
+    this.setState({orders: this.state.orders.filter(el => el.id !== id)})
+  }
 }
+
 
 export default App;
