@@ -6,7 +6,7 @@ export default function Header() {
         <div>
             <span className='logo'>Название</span>
         </div>
-        <div className='Банер'></div>
+        <div className='presentation'></div>
     </header>
 
   )
