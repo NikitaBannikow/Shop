@@ -5,10 +5,14 @@ import Order from './Order.js';
 
 
 const showOrders = (props) => {
-
+    let summa = 0
+    props.orders.forEach(el => summa += Number.parseFloat(el.price))
+        
     return (<div> {props.orders.map(el => (
-        <Order key = {el.id} item = {el} />
-    ))}</div>)
+        <Order onDelete = {props.onDelete} key = {el.id} item = {el} />
+    ))}
+    <p className='summ'>Сумма: {new Intl.NumberFormat().format(summa)}₽</p>
+    </div>)
 }
 
 const showNothing = () => {
